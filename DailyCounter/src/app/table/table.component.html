@@ -1,0 +1,17 @@
+<div>
+    <h2>Links Mais Acessados nos Últimos 7 Dias</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>URL</th>
+                <th>Clicks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let link of links">
+                <td>{{ link.url }}</td>
+                <td>{{ link.clicks }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

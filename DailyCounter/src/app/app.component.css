@@ -1,0 +1,13 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+app-chart,
+app-table {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
