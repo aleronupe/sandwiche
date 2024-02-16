@@ -12,19 +12,20 @@ app.get('/api/data', (req, res) => {
     {
       date: "2023-12-01",
       pageViews: 30,
-      clickedLinks: {
-        "link-01": 20,
-        "link-02": 5,
-        "link-03": 5
-      }
-    }, {
+      clickedLinks: [
+        { link: "link-01", clicks: 20 },
+        { link: "link-02", clicks: 5 },
+        { link: "link-03", clicks: 6 }
+      ]
+    },
+    {
       date: "2023-12-02",
       pageViews: 20,
-      clickedLinks: {
-        "link-01": 10,
-        "link-02": 3,
-        "link-03": 7
-      }
+      clickedLinks: [
+        { link: "link-01", clicks: 10 },
+        { link: "link-02", clicks: 3 },
+        { link: "link-03", clicks: 7 }
+      ]
     }
   ]
 

@@ -10,7 +10,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let link of links">
-                <th scope="row">1</th>
+                <th scope="row">{{ link.idx }}</th>
                 <td>{{ link.url }}</td>
                 <td>{{ link.clicks }}</td>
             </tr>
