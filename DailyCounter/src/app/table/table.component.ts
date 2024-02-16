@@ -14,13 +14,6 @@ type clickDataView = { idx: number, url: string, clicks: number }
 export class TableComponent implements OnInit {
   links: clickDataView[] = [];
 
-  // links: any[] = [
-  //   { url: 'https://example.com/page1', clicks: 120 },
-  //   { url: 'https://example.com/page2', clicks: 90 },
-  //   { url: 'https://example.com/page3', clicks: 80 },
-  //   // Adicione mais dados conforme necessário
-  // ];
-
   constructor(private analyticsService: AnalyticsService) { }
 
   ngOnInit(): void {
@@ -28,8 +21,7 @@ export class TableComponent implements OnInit {
     const clicksMap = new Map<string, number>();
 
     // Obtenção dos dados por click
-    this.analyticsService.getData().subscribe((analytics) => {
-
+    this.analyticsService.getDataLast7Days('2024-02-11').subscribe((analytics) => {
       // Itera por todos os elementos retornados
       for (const webData of analytics) {
         // Calcular total de cliques por link
@@ -40,9 +32,15 @@ export class TableComponent implements OnInit {
         });
       }
 
-      // Criar array resultante
-      this.links = Array.from(clicksMap.entries()).map(([link, totalClicks], idx) => ({
-        idx: idx+1,
+      // Cria array a partir do mapa, no formato: [link, totalClicks]
+      let arrayClicks = Array.from(clicksMap.entries());
+
+      // Ordena array de forma decrescente
+      arrayClicks = arrayClicks.sort((a, b) => b[1] - a[1]);
+
+      // Formata array para exibição em tela
+      this.links = arrayClicks.map(([link, totalClicks], idx) => ({
+        idx: idx + 1,
         url: link,
         clicks: totalClicks,
       }));

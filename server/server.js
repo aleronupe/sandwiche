@@ -1,35 +1,55 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 const port = 3000;
+// Importa a função do módulo
+const fetchData = require('./database');
 
 app.use(express.json());
 
-app.get('/api/data', (req, res) => {
-  // Implemente a lógica para obter dados reais aqui
-  const data = { clicks: [50, 30, 60, 45, 75, 90, 40] };
+app.get("/api/data", (req, res) => {
 
-  const dados = [
-    {
-      date: "2023-12-01",
-      pageViews: 30,
-      clickedLinks: [
-        { link: "link-01", clicks: 20 },
-        { link: "link-02", clicks: 5 },
-        { link: "link-03", clicks: 6 }
-      ]
-    },
-    {
-      date: "2023-12-02",
-      pageViews: 20,
-      clickedLinks: [
-        { link: "link-01", clicks: 10 },
-        { link: "link-02", clicks: 3 },
-        { link: "link-03", clicks: 7 }
-      ]
+  const rawData = fetchData();
+
+  res.json(rawData);
+});
+
+app.get("/api/datatime", (req, res) => {
+
+  // Validação do dado enviado
+  if (!req.query.currentDate) {
+    res.status(400).json(
+      `Missing query param: 'currentDate'`
+    );
+  }
+
+  // Data de referência a ser comparada
+  const dateReference = new Date(req.query.currentDate + 'T00:00:00');
+
+  // Obtenção dos dados da base
+  const rawData = fetchData();
+
+  const refinedData = rawData.reduce((acc, curr) => {
+    // Obtém o dado do objeto presente no formato Data
+    let currDate = new Date(curr.date + 'T00:00:00');
+
+    // Calcula a diferença em milissegundos
+    const diffInMilliseconds = Math.abs(dateReference - currDate);
+
+    // Converte a diferença para dias
+    const diffInDays = diffInMilliseconds / (1000 * 60 * 60 * 24);
+
+    // Verifica se a diferença é menor ou igual a 7 dias
+    if (dateReference >= currDate && diffInDays <= 7) {
+      console.log(curr.date);
+      acc.push(curr);
     }
-  ]
 
-  res.json(dados);
+    return acc;
+  }, [])
+
+  // console.log(refinedData);
+
+  res.json(refinedData);
 });
 
 app.listen(port, () => {

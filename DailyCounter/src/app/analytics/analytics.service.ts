@@ -7,11 +7,12 @@ import { Analytics } from './analytics.interface'; // Import the Comment interfa
   providedIn: 'root',
 })
 export class AnalyticsService {
-  private baseUrl = 'http://localhost:4200/api/data';
+  private baseUrl = 'http://localhost:4200/api/datatime';
 
   constructor(private http: HttpClient) { }
 
-  getData(): Observable<Analytics[]> {
-    return this.http.get<Analytics[]>(`${this.baseUrl}`);
+  getDataLast7Days(currentDate: string): Observable<Analytics[]> {
+    const params = { currentDate: currentDate };
+    return this.http.get<Analytics[]>(`${this.baseUrl}`, { params: params });
   }
 }
