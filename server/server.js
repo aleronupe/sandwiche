@@ -6,7 +6,7 @@ const fetchData = require('./database');
 
 app.use(express.json());
 
-app.get("/api/data", (req, res) => {
+app.get("/api/datadaily", (req, res) => {
 
   const rawData = fetchData();
 
@@ -40,7 +40,6 @@ app.get("/api/datatime", (req, res) => {
 
     // Verifica se a diferença é menor ou igual a 7 dias
     if (dateReference >= currDate && diffInDays <= 7) {
-      console.log(curr.date);
       acc.push(curr);
     }
 
