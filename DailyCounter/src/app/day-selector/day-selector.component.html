@@ -1,0 +1,13 @@
+<div class="date-card" style="margin-bottom: 20px;">
+    <div class="card" style="align-items: center;">
+        <div class="card-body">
+            <h5 class="card-title display-6">Data de Hoje</h5>
+            <div class="d-flex flex-column align-items-center mt-3">
+                <label for="dataSelector" class="mb-2">Selecione a data:</label>
+                <select id="dataSelector" class="form-select" (change)="selecionarData($event)">
+                    <option *ngFor="let data of datas" [value]="data">{{ data }}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
