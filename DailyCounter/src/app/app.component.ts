@@ -8,6 +8,12 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AppComponent {
   title = 'DailyCounter';
+  selectedDate: string | undefined;
+
+  // Corrija o nome do método para que corresponda ao que foi definido no template
+  onDateSelected(date: string): void {
+    this.selectedDate = date;
+  }
 
   constructor(private modalService: NgbModal) {
   }

@@ -13,7 +13,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <a class="navbar-brand" href="#">
-                <img src="../assets/hot-dog-white.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                <img src="../assets/hot-dog-white.png" width="50" height="50" class="d-inline-block align-top" alt="">
                 HotClickz
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -31,26 +31,7 @@
     </header>
 
     <div class="container-fluid">
-        <div class="date-card">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Data de Hoje</h5>
-                    <p class="card-text">23 de Fevereiro de 2024</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- <div class="row">
-            <div class="col-md-6">
-                <app-table></app-table>
-            </div>
-            <div class="col-md-6">
-                <app-link-chart></app-link-chart>
-            </div>
-        </div> -->
-
-
-
+        <app-day-selector (dateSelected)="onDateSelected($event)"></app-day-selector>
 
         <div class="row">
             <div class="col-md-5 element-container">
@@ -58,7 +39,7 @@
                     <h2 class="element-title display-1">Cliques da Última Semana </h2>
                 </div>
                 <div class="element-container">
-                    <app-table class="table-responsive"></app-table>
+                    <app-table [selectedDate]="selectedDate" class="table-responsive"></app-table>
                 </div>
             </div>
             <div class="col-md-7 element-container">

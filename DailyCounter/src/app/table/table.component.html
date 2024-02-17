@@ -1,18 +1,23 @@
-<div style="width: 100%; max-width: 800px;">
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">URL</th>
-                <th scope="col">Clicks</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let link of links">
-                <th scope="row">{{ link.idx }}</th>
-                <td>{{ link.url }}</td>
-                <td>{{ link.clicks }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="card" style="align-items: center;">
+    <div class="title-container">
+        <h2 class="element-title" style="font-size: larger;">{{ timeFrame }}</h2>
+    </div>
+    <div style="width: 100%; max-width: 800px;">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">URL</th>
+                    <th scope="col">Clicks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let link of links">
+                    <th scope="row">{{ link.idx }}</th>
+                    <td>{{ link.url }}</td>
+                    <td>{{ link.clicks }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

@@ -8,12 +8,14 @@ import { TableComponent } from './table/table.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { LinkChartComponent } from './link-chart/link-chart.component';
+import { DaySelectorComponent } from './day-selector/day-selector.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
-    LinkChartComponent
+    LinkChartComponent,
+    DaySelectorComponent
   ],
   imports: [
     BrowserModule,
