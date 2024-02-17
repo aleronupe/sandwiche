@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-import { AnalyticsService } from '../analytics/analytics.service'
-import { Analytics } from '../analytics/analytics.interface'
+import { AnalyticsService } from '../analytics/analytics.service';
 
 type clickDataView = { idx: number, url: string, clicks: number }
 

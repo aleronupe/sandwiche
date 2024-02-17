@@ -1,12 +1,59 @@
-:host {
+body {
+    background: linear-gradient(to bottom, white, #f0f0f0);
+    min-height: 100vh;
+    position: relative;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 20px;
 }
 
-app-table {
+.navbar {
+    background-color: #000;
+    font-weight: bold;
+}
+
+.navbar-dark .navbar-brand {
+    color: white;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
     width: 100%;
-    max-width: 600px;
+    margin-top: auto;
+    /* Coloca o footer na parte inferior da tela */
+}
+
+.container-fluid {
+    padding-top: 20px;
+}
+
+.title-container {
+    text-align: center;
     margin-bottom: 20px;
+}
+
+.element-title {
+    font-size: 1.5em;
+}
+
+.element-container {
+    /* margin: 0 20px; */
+    overflow: hidden;
+}
+
+.date-card {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.row {
+    margin-bottom: 50px;
 }
